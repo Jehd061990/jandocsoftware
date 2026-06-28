@@ -1,55 +1,74 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+  AiBrain03Icon,
+  AiBrowserIcon,
+  AiChipIcon,
+  AiCloud01Icon,
+  AiCloudIcon,
+  AiFolder01Icon,
+  AiFolder02Icon,
+  AiChat01Icon,
+} from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 const navItems = [
   { label: "Home", href: "#home" },
+  { label: "Trust", href: "#trust" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#featured" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
-const stats = [
-  { value: "10+", label: "Launches shipped" },
-  { value: "98%", label: "Client satisfaction" },
-  { value: "24/7", label: "Support coverage" },
+const dashboardMetrics = [
+  { label: "New leads", value: "82", trend: "+18%" },
+  { label: "Revenue", value: "$124K", trend: "+12%" },
+  { label: "Automation tasks", value: "46", trend: "+28%" },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/85 px-4 py-3 backdrop-blur backdrop-saturate-150 shadow-sm shadow-slate-900/5 transition-colors duration-300 sm:px-8 lg:px-12">
-      <div className="mx-auto flex flex-wrap items-center justify-between gap-3 max-w-7xl">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/90 px-4 py-4 backdrop-blur backdrop-saturate-150 shadow-sm shadow-slate-900/5 transition duration-300 sm:px-8 lg:px-12">
+      <div className="mx-auto flex flex-wrap items-center justify-between gap-4 max-w-7xl">
         <Link
           href="#home"
-          className="order-1 text-lg font-semibold tracking-tight text-slate-900"
+          className="text-lg font-semibold tracking-[0.02em] text-slate-950"
         >
-          Jandoc Software
+          JANDOC SOFTWARE
         </Link>
 
-        <NavigationMenu className="order-3 w-full md:order-2 md:w-auto">
-          <NavigationMenuList className="flex flex-wrap justify-center gap-2">
+        <nav className="order-3 w-full md:order-2 md:w-auto">
+          <ul className="flex flex-wrap justify-center gap-2 text-sm font-medium text-slate-700">
             {navItems.map((item) => (
-              <NavigationMenuItem key={item.label}>
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  className="rounded-full px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
                 >
-                  <Link href={item.href}>{item.label}</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+          </ul>
+        </nav>
 
-        <span className="order-2 rounded-full bg-slate-900 px-3 py-1 text-sm text-white md:order-3">
+        <span className="order-2 rounded-full bg-slate-950 px-3 py-2 text-sm font-medium text-white md:order-3">
           Available for new projects
         </span>
       </div>
@@ -61,79 +80,168 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_35%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] px-6 py-8 sm:px-8 lg:px-12"
+      className="relative overflow-hidden bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.18),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(129,140,248,0.16),_transparent_30%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] px-6 py-16 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto flex max-w-7xl flex-col">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-8">
-            <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-              Trusted by growing businesses that value speed and clarity
-            </div>
-            <div className="space-y-4">
-              <h1 className="max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Custom software that turns daily operations into a growth
-                engine.
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                We build polished POS, inventory, CRM, analytics, and AI
-                automation tools that help your team work faster and serve
-                customers better.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="rounded-full">
-                <Link href="#contact">Book a free strategy call</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="rounded-full"
-              >
-                <Link href="#services">Explore services</Link>
-              </Button>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm"
-                >
-                  <p className="text-2xl font-bold text-slate-900">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-slate-600">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.14),_transparent_20%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.12),_transparent_25%)]" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="space-y-8"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur">
+            <HugeiconsIcon
+              icon={AiCloud01Icon}
+              className="size-4 text-sky-500"
+            />
+            Built for US, Australian, and Philippine businesses
           </div>
 
-          <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-7 text-white shadow-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
-              What you can expect
+          <div className="space-y-6">
+            <h1 className="max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Custom Web Applications & AI Automation for Growing Businesses
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+              We build scalable SaaS platforms, CRM systems, AI-powered
+              workflows, dashboards, and business applications that help
+              companies automate operations and grow faster.
             </p>
-            <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-300">
-              <li className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <span className="font-semibold text-white">
-                  Discovery-led planning
-                </span>{" "}
-                so your system matches your workflow from day one.
-              </li>
-              <li className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <span className="font-semibold text-white">
-                  Fast, scalable builds
-                </span>{" "}
-                with modern Next.js, React, and TypeScript.
-              </li>
-              <li className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <span className="font-semibold text-white">
-                  Ongoing support
-                </span>{" "}
-                for updates, improvements, and team onboarding.
-              </li>
-            </ul>
           </div>
-        </div>
+
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <Button asChild size="lg" className="rounded-full">
+              <Link href="#contact">Book a Free Consultation</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-full"
+            >
+              <Link href="#featured">View Our Work</Link>
+            </Button>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {dashboardMetrics.map((metric) => (
+              <div
+                key={metric.label}
+                className="rounded-3xl border border-slate-200 bg-white/95 p-5 shadow-sm"
+              >
+                <p className="text-lg font-semibold text-slate-900">
+                  {metric.value}
+                </p>
+                <p className="mt-2 text-sm text-slate-500">{metric.label}</p>
+                <p className="mt-3 text-sm font-semibold text-sky-700">
+                  {metric.trend}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="space-y-6"
+        >
+          <Card className="rounded-[2rem] border border-slate-200/80 bg-white/95 shadow-2xl">
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold text-slate-950">
+                Operations dashboard
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-950 p-5 text-white shadow-inner">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm uppercase tracking-[0.3em] text-sky-300">
+                    Live KPIs
+                  </span>
+                  <span className="rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold text-sky-300">
+                    Updated
+                  </span>
+                </div>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-3xl bg-slate-900/80 p-4">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                      Revenue
+                    </p>
+                    <p className="mt-3 text-2xl font-semibold">$124K</p>
+                  </div>
+                  <div className="rounded-3xl bg-slate-900/80 p-4">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                      Tasks
+                    </p>
+                    <p className="mt-3 text-2xl font-semibold">46</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="h-2 rounded-full bg-slate-200">
+                  <div className="h-2 w-3/4 rounded-full bg-sky-500" />
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-3xl bg-slate-100 p-4 text-slate-800">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                      New customers
+                    </p>
+                    <p className="mt-3 text-xl font-semibold">82</p>
+                  </div>
+                  <div className="rounded-3xl bg-slate-100 p-4 text-slate-800">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                      Revenue growth
+                    </p>
+                    <p className="mt-3 text-xl font-semibold">+12%</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter className="justify-between gap-3 px-6 py-5 text-slate-500">
+              <span>Connected to Stripe & Shopify</span>
+              <HugeiconsIcon
+                icon={AiBrowserIcon}
+                className="size-5 text-slate-400"
+              />
+            </CardFooter>
+          </Card>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Card className="rounded-[2rem] border border-slate-200/80 bg-white/95 shadow-2xl">
+              <CardHeader>
+                <CardTitle className="text-sm font-semibold text-slate-950">
+                  AI Workflow
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-3 rounded-3xl bg-sky-50 p-4 text-sky-700">
+                  <HugeiconsIcon icon={AiBrain03Icon} className="size-5" />
+                  <span>Automation rules</span>
+                </div>
+                <p className="text-sm text-slate-600">
+                  Delivering automated approvals and follow-up actions.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="rounded-[2rem] border border-slate-200/80 bg-white/95 shadow-2xl">
+              <CardHeader>
+                <CardTitle className="text-sm font-semibold text-slate-950">
+                  Core App
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-3 rounded-3xl bg-slate-100 p-4 text-slate-700">
+                  <HugeiconsIcon icon={AiChipIcon} className="size-5" />
+                  <span>API integration</span>
+                </div>
+                <p className="text-sm text-slate-600">
+                  Connected payments, logistics, and inventory systems.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

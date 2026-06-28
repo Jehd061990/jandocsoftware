@@ -1,103 +1,131 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  AiBrain03Icon,
+  AiBrowserIcon,
+  AiChipIcon,
+  AiCloud01Icon,
+  AiCloudIcon,
+  AiFolder01Icon,
+  AiFolder02Icon,
+  AiChat01Icon,
+} from "@hugeicons/core-free-icons";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const services = [
   {
-    title: "Point of Sale",
+    title: "Custom Web Applications",
     description:
-      "Fast, reliable checkout flows for retail teams that need speed and simplicity.",
-    highlight: "Real-time sales tracking",
+      "Tailored business platforms built to match your workflows, data flows, and team operations.",
+    icon: AiFolder01Icon,
   },
   {
-    title: "Inventory Management",
+    title: "SaaS Development",
     description:
-      "Keep stock, suppliers, and replenishment in one clear system that your team can trust.",
-    highlight: "Low-stock alerts",
-  },
-  {
-    title: "CRM & Customer Journeys",
-    description:
-      "Create connected customer experiences with follow-ups, lead stages, and workflow automation.",
-    highlight: "Smarter engagement",
+      "Subscription-ready applications with billing, user management, and polished customer experiences.",
+    icon: AiCloud01Icon,
   },
   {
     title: "AI Automation",
     description:
-      "Use AI to reduce repetitive work and give your staff more time for high-value tasks.",
-    highlight: "Process automation",
+      "Automate repetitive work, reduce overhead, and keep high-value staff focused on growth.",
+    icon: AiBrain03Icon,
   },
   {
-    title: "Dashboards & Analytics",
+    title: "CRM Systems",
     description:
-      "Turn your business data into clear decisions with executive-ready reporting dashboards.",
-    highlight: "Live insights",
+      "Customer engagement tools that organize pipelines, service requests, and stakeholder communication.",
+    icon: AiChat01Icon,
   },
   {
-    title: "SaaS Platforms",
+    title: "POS Systems",
     description:
-      "Launch subscription products with secure auth, billing logic, and scalable architecture.",
-    highlight: "Growth-ready products",
+      "Modern point-of-sale software designed for retail, hospitality, and service teams.",
+    icon: AiBrowserIcon,
+  },
+  {
+    title: "Inventory Management",
+    description:
+      "Stock control, supplier workflows, and demand forecasting to reduce shrinkage and stockouts.",
+    icon: AiFolder02Icon,
+  },
+  {
+    title: "Business Dashboards",
+    description:
+      "Executive and operations dashboards that put key metrics, forecasts, and trends at your fingertips.",
+    icon: AiCloudIcon,
+  },
+  {
+    title: "API Integrations",
+    description:
+      "Stable connections across payments, analytics, CRMs, and internal systems for a unified data experience.",
+    icon: AiChipIcon,
   },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Services = () => {
   return (
-    <section
+    <motion.section
       id="services"
-      className="bg-slate-950 px-6 py-16 text-white sm:px-8 lg:px-12"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ staggerChildren: 0.08 }}
+      className="bg-slate-50 px-6 py-16 sm:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+        <motion.div variants={fadeUp} className="mb-10 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
             Services
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Software built for the way your business actually works.
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+            Business software services made to convert and scale.
           </h2>
-          <p className="mt-4 text-lg text-slate-300">
-            From daily operations to customer-facing experiences, we design
-            products that feel effortless to use and easy to expand.
+          <p className="mt-4 text-lg leading-8 text-slate-600">
+            From custom applications and SaaS launches to AI automation and
+            integration work, we help businesses become more efficient and more
+            profitable.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
-            <Card
+            <motion.div
               key={service.title}
-              className="border-white/10 bg-white/5 text-left shadow-lg backdrop-blur"
+              variants={fadeUp}
+              className="group rounded-[2rem] border border-slate-200 bg-slate-950 p-6 text-white transition hover:-translate-y-1 hover:border-sky-300 hover:bg-slate-900/95"
             >
-              <CardHeader>
-                <CardTitle className="text-xl text-white">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-sm leading-7 text-slate-300">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="rounded-xl border border-sky-400/20 bg-sky-400/10 px-3 py-2 text-sm font-medium text-sky-200">
-                  {service.highlight}
-                </div>
-                <Button
-                  asChild
-                  variant="secondary"
-                  className="w-full rounded-full"
-                >
-                  <Link href="#contact">Discuss this solution</Link>
-                </Button>
-              </CardContent>
-            </Card>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-3xl bg-sky-500/15 text-sky-300 shadow-inner">
+                <HugeiconsIcon icon={service.icon} className="size-5" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">
+                {service.title}
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                {service.description}
+              </p>
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className="mt-6 rounded-full border border-slate-700 bg-slate-800 text-white transition group-hover:scale-[1.02]"
+              >
+                <Link href="#contact">Learn more</Link>
+              </Button>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
