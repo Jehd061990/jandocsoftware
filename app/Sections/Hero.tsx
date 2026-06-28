@@ -23,6 +23,40 @@ const stats = [
   { value: "24/7", label: "Support coverage" },
 ];
 
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/85 px-4 py-3 backdrop-blur backdrop-saturate-150 shadow-sm shadow-slate-900/5 transition-colors duration-300 sm:px-8 lg:px-12">
+      <div className="mx-auto flex flex-wrap items-center justify-between gap-3 max-w-7xl">
+        <Link
+          href="#home"
+          className="order-1 text-lg font-semibold tracking-tight text-slate-900"
+        >
+          Jandoc Software
+        </Link>
+
+        <NavigationMenu className="order-3 w-full md:order-2 md:w-auto">
+          <NavigationMenuList className="flex flex-wrap justify-center gap-2">
+            {navItems.map((item) => (
+              <NavigationMenuItem key={item.label}>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <Link href={item.href}>{item.label}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <span className="order-2 rounded-full bg-slate-900 px-3 py-1 text-sm text-white md:order-3">
+          Available for new projects
+        </span>
+      </div>
+    </header>
+  );
+}
+
 const Hero = () => {
   return (
     <section
@@ -30,32 +64,6 @@ const Hero = () => {
       className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_35%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] px-6 py-8 sm:px-8 lg:px-12"
     >
       <div className="mx-auto flex max-w-7xl flex-col">
-        <header className="mb-10 flex flex-wrap items-center justify-between rounded-full border border-slate-200/80 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
-          <Link
-            href="#home"
-            className="text-lg font-semibold tracking-tight text-slate-900"
-          >
-            Jandoc Software
-          </Link>
-          <NavigationMenu>
-            <NavigationMenuList className="flex-wrap gap-2">
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.label}>
-                  <NavigationMenuLink
-                    asChild
-                    className={navigationMenuTriggerStyle()}
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-          <span className="rounded-full bg-slate-900 px-3 py-1 text-sm text-white">
-            Available for new projects
-          </span>
-        </header>
-
         <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-8">
             <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">

@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <section id="about" className="bg-white px-6 py-16 sm:px-8 lg:px-12">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2">
         <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
             Why choose us

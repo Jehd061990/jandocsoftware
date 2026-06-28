@@ -1,7 +1,7 @@
 const Featured = () => {
   return (
     <section id="featured" className="bg-slate-100 px-6 py-16 sm:px-8 lg:px-12">
-      <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm lg:grid-cols-[1fr_0.8fr] lg:p-10">
+      <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:grid-cols-2 lg:grid-cols-[1fr_0.8fr] lg:p-10">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
             Featured project
