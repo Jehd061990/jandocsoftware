@@ -100,7 +100,7 @@ const Hero = () => {
 
           <div className="space-y-6">
             <h1 className="max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Custom Web Applications & AI Automation for Growing Businesses
+              We Build Business Software That Automates Your Operations
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
               We build scalable SaaS platforms, CRM systems, AI-powered
@@ -109,18 +109,54 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Button asChild size="lg" className="rounded-full">
-              <Link href="#contact">Book a Free Consultation</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-full"
-            >
-              <Link href="#featured">View Our Work</Link>
-            </Button>
+          <div>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full px-6 py-6 bg-sky-700 transition hover:bg-sky-800"
+              >
+                <Link href="#contact">
+                  <p className="text-lg">Book a Free Consultation</p>
+                </Link>
+              </Button>
+              {/* <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="rounded-full"
+              >
+                <Link href="#featured">View Our Work</Link>
+              </Button> */}
+
+              {/* <ul>
+                <li className="mt-2 text-sm text-slate-500">
+                  Free consultation.
+                </li>
+                <li className="text-sm text-slate-500">No obligation.</li>
+                <li className="text-sm text-slate-500">
+                  Just a conversation about your needs.
+                </li>
+              </ul> */}
+
+              <p className="text-sm text-slate-500">
+                Free consultation. No obligation. Just a conversation about your
+                needs.
+              </p>
+            </div>
+            {/* <p className="text-sm text-slate-500">
+              Free consultation. No obligation. Just a conversation about your
+              needs.
+            </p> */}
+            {/* <ul>
+              <li className="mt-2 text-sm text-slate-500">
+                Free consultation.
+              </li>
+              <li className="text-sm text-slate-500">No obligation.</li>
+              <li className="text-sm text-slate-500">
+                Just a conversation about your needs.
+              </li>
+            </ul> */}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">

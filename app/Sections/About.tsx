@@ -30,19 +30,24 @@ const About = () => {
             Our process
           </p>
           <div className="mt-6 space-y-4">
-            {["Discovery", "Planning", "Development", "Launch", "Support"].map(
-              (step, index) => (
-                <div
-                  key={step}
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/20 text-sm font-semibold text-sky-300">
-                    0{index + 1}
-                  </div>
-                  <span className="text-base font-medium">{step}</span>
+            {[
+              "Discovery",
+              "Planning",
+              "Development",
+              "Testing",
+              "Deployment",
+              "Support",
+            ].map((step, index) => (
+              <div
+                key={step}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4"
+              >
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/20 text-sm font-semibold text-sky-300">
+                  0{index + 1}
                 </div>
-              ),
-            )}
+                <span className="text-base font-medium">{step}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
